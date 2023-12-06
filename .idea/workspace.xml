@@ -5,16 +5,29 @@
   </component>
   <component name="CargoProjects">
     <cargoProject FILE="$PROJECT_DIR$/day_one/Cargo.toml" />
+    <cargoProject FILE="$PROJECT_DIR$/day_two/Cargo.toml" />
+    <cargoProject FILE="$PROJECT_DIR$/day_six/Cargo.toml" />
+    <cargoProject FILE="$PROJECT_DIR$/day_three/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b537184c-5e52-4406-934e-9189520c1c59" name="Changes" comment="blub" />
+    <list default="true" id="b537184c-5e52-4406-934e-9189520c1c59" name="Changes" comment="blub">
+      <change afterPath="$PROJECT_DIR$/day_six/Cargo.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/day_six/Cargo.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/day_six/src/main.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/day_three/Cargo.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/day_three/Cargo.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/day_three/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day_two/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/day_two/src/main.rs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/day_one" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -38,17 +51,21 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2Z4VjOhcOaWTA062eYmhJ0P7E1H" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Cargo.Test tests::test_split_right.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/leonie/Rust/advent_of_code_2023",
+    "last_opened_file_path": "/home/leonie/Rust/advent_of_code_2023/day_three/Cargo.toml",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -59,6 +76,30 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Test tests::test_split_right" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package day_two --bin day_two tests::test_split_right -- --exact" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$/day_two" />
+      <option name="emulateTerminal" value="true" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Cargo.Test tests::test_split_right" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
   </component>
@@ -71,7 +112,8 @@
       <option name="presentableId" value="Default" />
       <updated>1701681473045</updated>
       <workItem from="1701681474140" duration="19085000" />
-      <workItem from="1701705331498" duration="78000" />
+      <workItem from="1701705331498" duration="9345000" />
+      <workItem from="1701861722327" duration="4952000" />
     </task>
     <task id="LOCAL-00001" summary="blub">
       <option name="closed" value="true" />
@@ -88,6 +130,7 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
       <path value="$PROJECT_DIR$/day_one" />
