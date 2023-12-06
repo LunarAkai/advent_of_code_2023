@@ -32,8 +32,6 @@ fn day_two_one() {
                 let individual_cube_shows = get_individual_cube_shows(line_right_side, counter);
 
 
-
-
             }
         }
     }
@@ -60,9 +58,19 @@ fn count_cube_shows(line_string: &str) -> i32 {
 
 fn get_individual_cube_shows(line_string: &str, counter: i32) -> LinkedList<&str>{
     let mut strings: LinkedList<&str> = Default::default();
+    let mut new_line_string = line_string; // why? weird mut stuff idk
 
-    for counter in 0..counter {
-        let mut result = split_string_both_sides(split_string_both_sides(line_string, "; ").next().unwrap(), "; ");
+
+    for c in 0..counter {
+
+        let mut result;
+        if c == counter - 1 {
+            //new_line_string = split_string_one_side(new_line_string, "; ", true);
+            result = split_string_both_sides(new_line_string, "\n");
+        } else {
+            result = split_string_both_sides(new_line_string, "; ");
+            new_line_string = split_string_one_side(new_line_string, "; ", false);
+        }
 
         strings.push_back(result.next().unwrap());
     }
@@ -91,9 +99,6 @@ fn split_string_one_side<'a>(string: &'a str, split_where: &'a str, left: bool) 
 fn split_string_both_sides<'a>(string: &'a str, split_where: &'a str) -> SplitN<'a, &'a str> {
     return string.splitn(2, split_where).into_iter()
 }
-
-
-
 
 // from: rust-by-example
 // The output is wrapped in a Result to allow matching on errors

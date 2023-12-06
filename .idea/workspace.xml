@@ -11,13 +11,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b537184c-5e52-4406-934e-9189520c1c59" name="Changes" comment="blub">
-      <change afterPath="$PROJECT_DIR$/day_six/Cargo.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/day_six/Cargo.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/day_six/src/main.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/day_three/Cargo.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/day_three/Cargo.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/day_three/src/main.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/day_two/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/day_two/src/main.rs" afterDir="false" />
     </list>
@@ -113,7 +106,7 @@
       <updated>1701681473045</updated>
       <workItem from="1701681474140" duration="19085000" />
       <workItem from="1701705331498" duration="9345000" />
-      <workItem from="1701861722327" duration="4952000" />
+      <workItem from="1701861722327" duration="9805000" />
     </task>
     <task id="LOCAL-00001" summary="blub">
       <option name="closed" value="true" />
@@ -123,11 +116,30 @@
       <option name="project" value="LOCAL" />
       <updated>1701704219228</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="blub">
+      <option name="closed" value="true" />
+      <created>1701891788963</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701891788963</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
