@@ -8,9 +8,14 @@
     <cargoProject FILE="$PROJECT_DIR$/day_two/Cargo.toml" />
     <cargoProject FILE="$PROJECT_DIR$/day_six/Cargo.toml" />
     <cargoProject FILE="$PROJECT_DIR$/day_three/Cargo.toml" />
+    <cargoProject FILE="$PROJECT_DIR$/day_seven/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b537184c-5e52-4406-934e-9189520c1c59" name="Changes" comment="blub">
+      <change afterPath="$PROJECT_DIR$/day_seven/Cargo.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/day_seven/Cargo.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/day_seven/src/main.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/day_seven/src/test.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/day_two/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/day_two/src/main.rs" afterDir="false" />
     </list>
@@ -18,6 +23,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Rust File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,24 +63,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Cargo.Test tests::test_split_right.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/leonie/Rust/advent_of_code_2023/day_three/Cargo.toml",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Cargo.Test tests::test_split_right.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/leonie/Rust/advent_of_code_2023/day_seven/Cargo.toml&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Test tests::test_split_right" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="test --package day_two --bin day_two tests::test_split_right -- --exact" />
@@ -107,6 +119,11 @@
       <workItem from="1701681474140" duration="19085000" />
       <workItem from="1701705331498" duration="9345000" />
       <workItem from="1701861722327" duration="9805000" />
+      <workItem from="1701898692375" duration="32000" />
+      <workItem from="1701939159506" duration="602000" />
+      <workItem from="1701955632175" duration="3652000" />
+      <workItem from="1702021424382" duration="899000" />
+      <workItem from="1702036367721" duration="28521000" />
     </task>
     <task id="LOCAL-00001" summary="blub">
       <option name="closed" value="true" />
@@ -124,7 +141,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701891788963</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="blub">
+      <option name="closed" value="true" />
+      <created>1701898703823</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701898703823</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

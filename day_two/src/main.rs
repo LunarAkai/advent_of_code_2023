@@ -61,18 +61,35 @@ fn get_individual_cube_shows(line_string: &str, counter: i32) -> LinkedList<&str
     let mut new_line_string = line_string; // why? weird mut stuff idk
 
 
-    for c in 0..counter {
+    for c in 0..counter+1 {
 
-        let mut result;
-        if c == counter - 1 {
-            //new_line_string = split_string_one_side(new_line_string, "; ", true);
-            result = split_string_both_sides(new_line_string, "\n");
-        } else {
-            result = split_string_both_sides(new_line_string, "; ");
-            new_line_string = split_string_one_side(new_line_string, "; ", false);
+        // let mut result: SplitN<&str>;
+
+       // let mut result;
+
+        let mut blub: Vec<_> = vec![];
+        if c <= counter {
+            blub.append(&mut new_line_string.splitn(counter as usize, "; ").collect::<Vec<_>>());
+        } else if counter == counter{
+
         }
 
-        strings.push_back(result.next().unwrap());
+
+        strings.push_back(blub.iter().next().unwrap().trim());
+
+
+
+        // if c == counter - 1 {
+        //     //new_line_string = split_string_one_side(new_line_string, "; ", true);
+        //     let blub: Vec<&str> = new_line_string.rsplit("; ").collect();
+        //     strings.push_back(blub.last().unwrap());
+        // } else {
+        //     result = split_string_both_sides(new_line_string, "; ");
+        //     new_line_string = split_string_one_side(new_line_string, "; ", false);
+        //
+        // }
+
+
     }
 
     println!("{:?}", strings);
