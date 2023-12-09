@@ -63,15 +63,19 @@ enum Card {
 }
 
 fn main() {
-   day_seven_part_one();
+    let res1 = day_seven_part_one("src/input.txt");
+    let res2 = day_seven_part_two("src/input.txt");
+
+    println!("Day 7, Part 1: {:?}", res1);
+    println!("Day 7, Part 2: {:?}", res2);
 }
 
-fn day_seven_part_one() {
+fn day_seven_part_one(path: &str) -> i32 {
     let mut vec_hand_bid = Vec::new();
 
     let mut hand_number: i32 = 0;
 
-    if let Ok(lines) = get_lines() {
+    if let Ok(lines) = read_lines(path) {
         for line in lines {
             let new_line: String = line.unwrap();
             let hand = &*split_hand(new_line.clone());
@@ -88,21 +92,27 @@ fn day_seven_part_one() {
 
     vec_hand_bid = sort_hands(vec_hand_bid);
 
-    println!("{:?}", vec_hand_bid);
     let mut total = 0;
-
-    for i in 0..hand_number {
-        total += (hand_number - i) * vec_hand_bid.iter().next().unwrap().bid;
+    for i in 1..=hand_number {
+        let bid = get_bid_from_vec(&vec_hand_bid, i-1);
+        total += i * bid;
     }
+    total
+}
 
-    println!("{:?}", total);
+fn day_seven_part_two(path: &str) -> i32 {
+    12
+}
+
+fn get_bid_from_vec<'t>(vec: &'t Vec<HandStruct>, index: i32) -> i32 {
+    vec.into_iter().nth(index as usize).unwrap().bid
 }
 
 fn sort_hands(mut vec: Vec<HandStruct>) -> Vec<HandStruct> {
     vec.sort_by(
         |x, y |match (x.hand_type).cmp(&y.hand_type) {
-            Ordering::Less => Ordering::Less,
-            Ordering::Greater => Ordering::Greater,
+            Ordering::Less => Ordering::Greater,
+            Ordering::Greater => Ordering::Less,
             Ordering::Equal => cmp_hand(&x.hand, &y.hand),
         },
     );
@@ -113,17 +123,15 @@ fn sort_hands(mut vec: Vec<HandStruct>) -> Vec<HandStruct> {
 fn cmp_hand(s: &str, o: &str) -> Ordering{
     for (s_c, o_c) in s.chars().zip(o.chars()) {
         match get_card_value(s_c).cmp(&get_card_value(o_c)){
-            Ordering::Less => return Ordering::Greater,
+            Ordering::Less => return Ordering::Less,
             Ordering::Equal => (),
-            Ordering::Greater => return Ordering::Less,
+            Ordering::Greater => return Ordering::Greater,
         }
     }
     Ordering::Equal
 }
 
-fn get_lines() -> io::Result<Lines<BufReader<File>>> {
-    read_lines("src/input.txt")
-}
+
 
 fn split_hand (line_string: String) -> String {
     let return_hand = line_string.split_at(5).0;

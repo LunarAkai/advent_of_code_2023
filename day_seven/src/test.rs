@@ -1,7 +1,17 @@
 #[cfg(test)]
 mod tests {
-    use crate::{split_hand, split_bid, get_type, HandType, get_value_vec, is_five_of_a_kind, is_high_card, is_one_pair, is_four_of_a_kind, is_three_of_a_kind, is_two_pair, get_card_value};
+    use crate::{split_hand, split_bid, get_type, HandType, get_value_vec, is_five_of_a_kind, is_high_card, is_one_pair, is_four_of_a_kind, is_three_of_a_kind, is_two_pair, get_card_value, day_seven_part_one, day_seven_part_two};
     use crate::Card::{Card2, Card3, Card5, Card6, Card7, CardA, CardJ, CardK, CardQ, CardT};
+
+    #[test]
+    fn test_test_input_part_one() {
+        assert_eq!(day_seven_part_one("src/test_input.txt"), 6592);
+    }
+
+    #[test]
+    fn test_test_input_part_two() {
+        assert_eq!(day_seven_part_two("src/test_input.txt"), 6839);
+    }
 
     #[test]
     fn test_get_hand() {
@@ -49,78 +59,18 @@ mod tests {
 
     #[test]
     fn test_get_card_value() {
-        assert_eq!(get_card_value('2'), 2);
-        assert_eq!(get_card_value('3'), 3);
-        assert_eq!(get_card_value('4'), 4);
-        assert_eq!(get_card_value('5'), 5);
-        assert_eq!(get_card_value('6'), 6);
-        assert_eq!(get_card_value('7'), 7);
-        assert_eq!(get_card_value('8'), 8);
-        assert_eq!(get_card_value('9'), 9);
-        assert_eq!(get_card_value('T'), 10);
-        assert_eq!(get_card_value('J'), 11);
-        assert_eq!(get_card_value('Q'), 12);
-        assert_eq!(get_card_value('K'), 13);
-        assert_eq!(get_card_value('A'), 14);
+        assert_eq!(get_card_value('2'),  Some(2));
+        assert_eq!(get_card_value('3'), Some(3));
+        assert_eq!(get_card_value('4'), Some(4));
+        assert_eq!(get_card_value('5'), Some(5));
+        assert_eq!(get_card_value('6'), Some(6));
+        assert_eq!(get_card_value('7'), Some(7));
+        assert_eq!(get_card_value('8'), Some(8));
+        assert_eq!(get_card_value('9'), Some(9));
+        assert_eq!(get_card_value('T'), Some(10));
+        assert_eq!(get_card_value('J'), Some(11));
+        assert_eq!(get_card_value('Q'), Some(12));
+        assert_eq!(get_card_value('K'), Some(13));
+        assert_eq!(get_card_value('A'), Some(14));
     }
-
-    // #[test]
-    // fn test_is_five_of_a_kind() {
-    //     assert_eq!(is_five_of_a_kind(vec![CardQ, CardQ, CardQ, CardQ, CardQ]), true);
-    //     assert_eq!(is_five_of_a_kind(vec![CardQ, CardQ, CardQ, CardJ, CardQ]), false);
-    //     assert_eq!(is_five_of_a_kind(vec![CardQ, CardQ, CardQ, CardJ, Card6]), false);
-    //     assert_eq!(is_five_of_a_kind(vec![CardQ, Card2, Card3, CardJ, Card6]), false);
-    //     assert_eq!(is_five_of_a_kind(vec![CardT, Card2, Card3, CardJ, Card6]), false);
-    // }
-    //
-    // #[test]
-    // fn test_is_four_of_a_kind() {
-    //     assert_eq!(is_four_of_a_kind(vec![CardQ, CardQ, CardQ, CardQ, CardQ]), false);
-    //     assert_eq!(is_four_of_a_kind(vec![CardQ, CardQ, CardQ, CardJ, CardQ]), true);
-    //     assert_eq!(is_four_of_a_kind(vec![CardQ, CardQ, CardQ, CardJ, Card6]), false);
-    //     assert_eq!(is_four_of_a_kind(vec![CardQ, CardQ, Card3, CardJ, Card6]), false);
-    //     assert_eq!(is_four_of_a_kind(vec![CardT, Card2, Card3, CardJ, Card6]), false);
-    // }
-    //
-    // #[test]
-    // fn test_is_three_of_a_kind() {
-    //     assert_eq!(is_three_of_a_kind(vec![Card3, Card2, CardT, Card3, CardK]), false);
-    //     assert_eq!(is_three_of_a_kind(vec![CardT, Card5, Card5, CardJ, Card5]), true);
-    //     assert_eq!(is_three_of_a_kind(vec![CardK, CardK, Card6, Card7, Card7]), false);
-    //     assert_eq!(is_three_of_a_kind(vec![CardK, CardT, CardJ, CardJ, CardT]), false);
-    //     assert_eq!(is_three_of_a_kind(vec![CardQ, CardQ, CardQ, CardJ, CardA]), true);
-    //
-    //     //Full House
-    //     assert_eq!(is_three_of_a_kind(vec![CardJ, Card5, Card5, CardJ, Card5]), false);
-    // }
-    //
-    // #[test]
-    // fn test_is_two_pair() {
-    //     assert_eq!(is_two_pair(vec![Card3, Card2, CardT, Card3, CardK]), false);
-    //     assert_eq!(is_two_pair(vec![CardT, Card5, Card5, CardJ, Card5]), false);
-    //     assert_eq!(is_two_pair(vec![CardK, CardK, Card6, Card7, Card7]), true);
-    //     assert_eq!(is_two_pair(vec![CardK, CardT, CardJ, CardJ, CardT]), true);
-    //     assert_eq!(is_two_pair(vec![CardQ, CardQ, CardQ, CardJ, CardA]), false);
-    //
-    //     //Full House
-    //     assert_eq!(is_three_of_a_kind(vec![CardJ, Card5, Card5, CardJ, Card5]), false);
-    // }
-    //
-    // #[test]
-    // fn test_is_one_pair() {
-    //     assert_eq!(is_one_pair(vec![Card3, Card2, CardT, Card3, CardK]), true);
-    //     assert_eq!(is_one_pair(vec![CardT, Card5, Card5, CardJ, Card5]), false);
-    //     assert_eq!(is_one_pair(vec![CardK, CardK, Card6, Card7, Card7]), false);
-    //     assert_eq!(is_one_pair(vec![CardK, CardT, CardJ, CardJ, CardT]), false);
-    //     assert_eq!(is_one_pair(vec![CardQ, CardQ, CardQ, CardJ, CardA]), false);
-    // }
-    //
-    // #[test]
-    // fn test_is_high_card() {
-    //     assert_eq!(is_high_card(vec![CardQ, CardQ, CardQ, CardQ, CardQ]), false);
-    //     assert_eq!(is_high_card(vec![CardQ, CardQ, CardQ, CardJ, CardQ]), false);
-    //     assert_eq!(is_high_card(vec![CardQ, CardQ, CardQ, CardJ, Card6]), false);
-    //     assert_eq!(is_high_card(vec![CardQ, Card2, Card3, CardJ, Card6]), true);
-    //     assert_eq!(is_high_card(vec![CardT, Card2, Card3, CardJ, Card6]), true);
-    // }
 }
