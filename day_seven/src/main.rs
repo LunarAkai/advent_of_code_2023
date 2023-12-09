@@ -4,13 +4,13 @@ use std::cmp::Ordering;
 use std::collections::HashMap;
 use std::fs::File;
 use std::hash::{Hash, Hasher};
-use std::io;
+use std::{char, io};
 use std::io::{BufRead, BufReader, Lines};
-use std::ops::Deref;
+use std::ops::{Add, Deref};
 use std::path::Path;
 use crate::Card::{Card2, Card3, Card4, Card5, Card6, Card7, Card8, Card9, CardA, CardJ, CardK, CardQ, CardT};
 
-#[derive(Eq, Debug)]
+#[derive(Debug)]
 struct HandStruct {
     hand: String,
     bid: i32,
@@ -21,53 +21,16 @@ impl HandStruct {
     fn new(hand: String, bid: i32, hand_type: HandType) -> HandStruct {
         Self { hand: hand.to_string(), bid, hand_type}
     }
-
     fn get_hand(&self) -> &str {
         &self.hand
     }
-
     fn get_bid(&self) -> &i32 {
         &self.bid
     }
-
     fn get_hand_type(&self) -> &HandType {
         &self.hand_type
     }
 }
-
-impl PartialEq for HandStruct {
-    #[inline]
-    fn eq(&self, other: &Self) -> bool {
-        self.hand == other.hand &&
-            self.hand_type == other.hand_type
-    }
-    fn ne(&self, other: &Self) -> bool {
-        get_card_value(self.hand.chars().into_iter().next().unwrap()) ==
-            get_card_value(other.hand.chars().into_iter().next().unwrap())
-    }
-}
-
-
-impl PartialOrd for HandStruct {
-    #[inline]
-    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
-        self.hand_type.partial_cmp(&other.hand_type)
-    }
-}
-
-
-impl Ord for HandStruct {
-    fn cmp(&self, other: &Self) -> Ordering {
-
-        let mut s_chars = &mut self.hand.chars();
-        let mut o_chars = &mut other.hand.chars();
-
-
-
-        get_card_value(self.hand.chars().next().unwrap()).cmp(&get_card_value(other.hand.chars().next().unwrap()))
-    }
-}
-
 
 
 #[derive(Debug, PartialEq, Hash, Eq, PartialOrd, Ord)]
@@ -100,6 +63,10 @@ enum Card {
 }
 
 fn main() {
+   day_seven_part_one();
+}
+
+fn day_seven_part_one() {
     let mut vec_hand_bid = Vec::new();
 
     let mut hand_number: i32 = 0;
@@ -116,24 +83,42 @@ fn main() {
             let hand_type = get_type(&v_vec);
 
             vec_hand_bid.push(HandStruct::new(hand.to_string(), bid, hand_type))
-
         }
     }
 
-    vec_hand_bid.sort();
+    vec_hand_bid = sort_hands(vec_hand_bid);
 
     println!("{:?}", vec_hand_bid);
-
     let mut total = 0;
 
     for i in 0..hand_number {
-        total += vec_hand_bid.iter().next().unwrap().bid * (hand_number-i);
+        total += (hand_number - i) * vec_hand_bid.iter().next().unwrap().bid;
     }
 
     println!("{:?}", total);
+}
 
+fn sort_hands(mut vec: Vec<HandStruct>) -> Vec<HandStruct> {
+    vec.sort_by(
+        |x, y |match (x.hand_type).cmp(&y.hand_type) {
+            Ordering::Less => Ordering::Less,
+            Ordering::Greater => Ordering::Greater,
+            Ordering::Equal => cmp_hand(&x.hand, &y.hand),
+        },
+    );
 
+    return vec;
+}
 
+fn cmp_hand(s: &str, o: &str) -> Ordering{
+    for (s_c, o_c) in s.chars().zip(o.chars()) {
+        match get_card_value(s_c).cmp(&get_card_value(o_c)){
+            Ordering::Less => return Ordering::Greater,
+            Ordering::Equal => (),
+            Ordering::Greater => return Ordering::Less,
+        }
+    }
+    Ordering::Equal
 }
 
 fn get_lines() -> io::Result<Lines<BufReader<File>>> {
@@ -266,31 +251,27 @@ fn count_matching_card(cards: &Vec<Card>) -> HashMap<&Card, i32> {
     card_count
 }
 
-fn get_card_value(c: char) -> i32 {
+fn get_card_value(c: char) -> Option<usize> {
     match c {
-        'A' => 14,
-        'K' => 13,
-        'Q' => 12,
-        'J' => 11,
-        'T' => 10,
-        '9' => 9,
-        '8' => 8,
-        '7' => 7,
-        '6' => 6,
-        '5' => 5,
-        '4' => 4,
-        '3' => 3,
-        '2' => 2,
-        _ => 0
+        '2' => Some(2),
+        '3' => Some(3),
+        '4' => Some(4),
+        '5' => Some(5),
+        '6' => Some(6),
+        '7' => Some(7),
+        '8' => Some(8),
+        '9' => Some(9),
+        'T' => Some(10),
+        'J' => Some(11),
+        'Q' => Some(12),
+        'K' => Some(13),
+        'A' => Some(14),
+        _ => None
     }
 }
 
-
-// from: rust-by-example
-// The output is wrapped in a Result to allow matching on errors
-// Returns an Iterator to the Reader of the lines of the file.
-fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
+fn read_lines<P>(filename: P) -> io::Result<Lines<BufReader<File>>>
     where P: AsRef<Path>, {
     let file = File::open(filename)?;
-    Ok(io::BufReader::new(file).lines())
+    Ok(BufReader::new(file).lines())
 }
